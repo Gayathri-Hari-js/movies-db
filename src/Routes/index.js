@@ -5,13 +5,13 @@ import Details from '../Pages/Details';
 import Status from '../Pages/Status';
 
 const RouteTree = () =>{
-    <BrowserRouter>
+    return(<BrowserRouter>
         <Routes>
           <Route path ='/' element = {<Dashboard/>} exact></Route>
           <Route path ='/details/:id' element = {<Details/>}></Route>
           <Route path ='/status' element = {<Status/>}></Route>
         </Routes>
-    </BrowserRouter> 
+    </BrowserRouter> );
 }
 
 export default RouteTree;
