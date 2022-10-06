@@ -89,3 +89,113 @@ button.search_button {
     color: #fff;
     background: linear-gradient(to right, rgb(23, 167, 159) 0%, rgb(2, 42, 80) 100%);
 }
+.header_nav {
+  height: 50px;
+  background: linear-gradient(to left, rgb(23, 167, 159) 0%, rgb(2, 42, 80) 100%);
+  width: 100%;
+  display: flex;
+  position:fixed;
+}
+.header_div {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.header_text{
+  color: #fff;
+  font-size: large;
+  font-weight: bold;
+}
+
+.footer_nav {
+  height: 60px;
+  background: linear-gradient(to left, rgb(23, 167, 159) 0%, rgb(2, 42, 80) 100%);
+  width: 100%;
+  display: flex;
+}
+.footer_div {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.inner_content_part_two {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: flex-start;
+    width: 100%;
+    box-sizing: border-box;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    padding: 20px 30px;
+}
+.card_container {
+  display: flex;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  width: 100%;
+  height: calc(180px * 2);
+}
+
+.card{
+  flex-shrink: 0;
+  width: 150px;
+  height: calc(150px * 1.5);
+  border-radius: 10px;
+  margin-left: 20px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  cursor: pointer;
+}
+.card_img{
+    box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+    width: 100%;
+    min-height: calc(150px * 1.5);
+    height: calc(150px * 1.5);
+    overflow: hidden;
+    border-radius: 10%;
+}
+.card_img_inner{
+  display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+.rating {
+  width: 100%;
+    padding: 26px 10px 0px 10px;
+    position: relative;
+    white-space: normal;
+    display: flex;
+    align-content: flex-start;
+    flex-wrap: wrap;
+}
+.card_rating_otter_ring{
+  position: absolute;
+  top: -19px;
+  left: 10px;
+}
+.card_rating_ring{
+  width: 38px;
+  height: 38px;
+  padding: 2px;
+  background-color: rgb(2, 42, 80);
+  border-radius: 50%;
+}
+.card_rating{
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 400;
+    padding-top: 5px;
+}

@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect } from 'react'
-import SearchBar from '../Components/SearchBar'
 import { useDispatch, useSelector } from 'react-redux'
+import Card from '../Components/Cards'
+import SearchBar from '../Components/SearchBar'
 import {fetchMovies} from '../Middleware/api'
 
 function Dashboard() {
@@ -26,7 +27,13 @@ function Dashboard() {
           </div>
         </section>
         <section className='inner_content_part_two'>
-        {moviesList.map(movie=>( movie.id))}
+          <div style={{width:'100%'}}>
+          <h2>What's Popular</h2>
+          <div className='card_container'>
+            {moviesList && moviesList.map(movie=>(
+              <Card key={movie.id} data={movie}></Card>))}
+          </div>
+          </div>
         </section>
       </Fragment>
   )

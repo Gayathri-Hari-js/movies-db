@@ -1,12 +1,39 @@
 import React from 'react'
-import {useSelector} from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import Moment from 'moment'
+import {useDispatch} from 'react-redux'
+const API_IMG_BASEURL = "https://image.tmdb.org/t/p/w500/";
 
-function Cards() {
-    const searchResult = useSelector((state) => state.filtered);
-    console.log(searchResult)
+function Card(props) {
+    const {poster_path,
+            title,
+            release_date,
+            vote_average,
+            id
+          } = props.data;
+    const RELEASE_DATE = Moment(release_date).format('MMM DD, YYYY');  
+    const navigate = useNavigate(); 
+    const dispatch = useDispatch();
+    const handleClick = () =>{
+      dispatch({ type: 'MOVIE_DATA', payload: props.data });
+      navigate(`/movie/${id}`);
+    }
   return (
-    <div>Cards</div>
+    <div className='card' onClick={handleClick}>
+      <div className='card_img'>
+        <img className='card_img_inner' src ={API_IMG_BASEURL+ poster_path} alt={title}></img>
+      </div>
+      <section className='rating'>
+        <div className='card_rating_otter_ring'>
+          <div className='card_rating_ring'>
+            <div className='card_rating'>{vote_average}</div>
+          </div>
+        </div>
+      </section>
+      <h1 style={{fontSize: "1em"}}>{title}</h1>
+      <p>{RELEASE_DATE}</p>
+    </div>
   )
 }
 
-export default Cards
+export default Card

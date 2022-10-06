@@ -2,7 +2,11 @@ import React from 'react'
 
 function Header() {
   return (
-    <div>Header</div>
+    <nav className='header_nav'>
+        <div className='header_div'>
+          <div className='header_text'>Movies DB</div>
+        </div>
+      </nav>
   )
 }
 

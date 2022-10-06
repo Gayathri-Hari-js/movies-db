@@ -2,7 +2,10 @@ import React from 'react'
 
 function Footer() {
   return (
-    <div>Footer</div>
+    <nav className='footer_nav'>
+        <div className='footer_div'>
+        </div>
+      </nav>
   )
 }
 
