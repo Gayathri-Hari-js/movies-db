@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Card from '../Components/Cards'
 import SearchBar from '../Components/SearchBar'
@@ -7,12 +7,23 @@ import {fetchMovies} from '../Middleware/api'
 function Dashboard() {
   const dispatch = useDispatch();
   const moviesList = useSelector((state) => state.moviesReducer.movies);
+  const [isSort, setSort] = useState(false);
 
   useEffect(()=>{
      fetchMovies().then(movies=>
     dispatch({ type: 'MOVIES_DATA', payload: movies.results }));
   },[]);
 
+  const handleSort = (e)=>{   setSort(!isSort)}
+
+  const processDataList = () =>{
+    var sortedProducts = JSON.parse( JSON.stringify(moviesList));
+    if (isSort) {
+      return sortedProducts.sort((a, b) => new Date(a.release_date) - new Date(b.release_date));
+    }
+      return moviesList;
+    
+  }
   return (
       <Fragment>
         <section className='inner_content_part_one'>
@@ -28,10 +39,13 @@ function Dashboard() {
         </section>
         <section className='inner_content_part_two'>
           <div style={{width:'100%'}}>
+          <div>Sort By Date  
+            <input type='checkbox' onChange={handleSort}/>
+          </div> 
           <h2>What's Popular</h2>
           <div className='card_container'>
-            {moviesList && moviesList.map(movie=>(
-              <Card key={movie.id} data={movie}></Card>))}
+            {processDataList().map(movie=>(
+              <Card key={movie.id} data={movie} />))}
           </div>
           </div>
         </section>

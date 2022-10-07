@@ -1,15 +1,17 @@
 import React, { useState }  from 'react'
 import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router';
 import {fetchSearchResults} from '../Middleware/api'
 
 function SearchBar() {
     const [searchQuery, setSearchQuery] = useState('');
     const dispatch = useDispatch();
-
+    const navigate = useNavigate();
     const handleSearch = async (e) => {
         e.preventDefault();
         const data = await fetchSearchResults(searchQuery);
-        dispatch({ type: 'SEARCH_DATA', payload: data });
+        dispatch({ type: 'SEARCH_DATA', payload: data.results });
+        navigate(`/result/${searchQuery}`);
     }
     const handleChange = (e) => {
         e.preventDefault();

@@ -2,7 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import Moment from 'moment'
 import {useDispatch} from 'react-redux'
-const API_IMG_BASEURL = "https://image.tmdb.org/t/p/w500/";
+import config from '../Middleware/config';
 
 function Card(props) {
     const {poster_path,
@@ -21,7 +21,7 @@ function Card(props) {
   return (
     <div className='card' onClick={handleClick}>
       <div className='card_img'>
-        <img className='card_img_inner' src ={API_IMG_BASEURL+ poster_path} alt={title}></img>
+        <img className='card_img_inner' src ={config.imgBaseURL+ poster_path} alt={title}></img>
       </div>
       <section className='rating'>
         <div className='card_rating_otter_ring'>

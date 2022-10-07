@@ -4,9 +4,9 @@ const REMOVE_SEARCH = "REMOVE_SEARCH";
 const searchReducer = (filtered = [], action) => {
     switch( action.type){
         case SEARCH_DATA:
-            return [...filtered, action.payload];
+            return {filtered: action.payload};
         case REMOVE_SEARCH:
-            return filtered= [];
+            return filtered = [];
         default:
             return filtered;
     }

@@ -21,6 +21,18 @@ export const fetchMovieById = async(id) => {
       console.warn(err);
   }
 }
+// movie credits
+///movie/{movie_id}/credits
+export const fetchMovieCredits = async(id) => {
+  try{
+      const url = `${config.baseURL}/movie/${id}/credits?${config.apiKey}`
+      const res = await fetch(url);
+      const resJson = await res.json();
+      return resJson;
+  } catch(err){
+      console.warn(err);
+  }
+}
 export const fetchSearchResults = async (query) => {
     try{
     if (query && query.length > 0) {
