@@ -39,7 +39,7 @@ function Details() {
         
         <p><b>Directors </b>
           {credits && credits.crew && 
-          credits.crew.map(each=>{ return each.known_for_department ==='Directing' ? each.name: '' })
+          credits.crew.map(each=>{ return each.known_for_department ==='Directing' ? each.name+', ': '' })
           }
         </p>
 
