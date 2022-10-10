@@ -61,3 +61,31 @@ export const fetchSearchResults = async (query) => {
         console.warn(err);
     }
   };
+
+  //post ratings
+
+  export const createRatings = async ( movie_id, body) =>{
+    try{
+      const url = `${config.baseURL}/movie/${movie_id}/rating?${config.apiKey}`;
+      fetch(url, {
+        method: 'POST',
+        headers: new Headers({
+           'Accept': 'application/json',
+           'Content-Type': 'application/json'
+        }),
+         body: JSON.stringify(body)
+    })
+    .then(response => {
+      if(!response.ok){throw new Error(`Error code:  ${response.status}`)}
+      else return response.json()
+    })
+    .then(
+      data => data.status_message,
+      err=> alert(err)
+    )
+    
+  } catch(err){
+      console.warn(err);
+      alert(err)
+  }
+  }

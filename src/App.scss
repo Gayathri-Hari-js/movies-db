@@ -109,6 +109,7 @@ button.search_button {
   color: #fff;
   font-size: large;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .footer_nav {
@@ -220,7 +221,35 @@ button.search_button {
 }
 
 #bar_chart{
-  background-color: rgb(9, 43, 43);
   width: 100vw;
   height: 100vh;
+}
+
+.icon_div{
+  color: #fff;
+  font-size: 23px;
+  cursor: pointer;
+}
+.stats_container{
+  // display: flex;
+  background-color: rgb(9, 43, 43);
+  text{
+    font-size: 10px;
+    fill: #fff;
+  }
+  text.label {
+    font-size: 12px;
+  }
+  path{ 
+    fill: #fff;
+  }
+  path.domain {
+    stroke: white;
+  }
+}
+
+.stats_title{
+  color: rgb(255, 255, 255);
+  padding: 70px 0px 0px 50px;
+  font-weight: 600;
 }

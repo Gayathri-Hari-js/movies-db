@@ -2,7 +2,8 @@ import React, {useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {useParams} from 'react-router-dom'
 import Moment from 'moment'
-import {fetchMovieById, fetchMovieCredits} from '../Middleware/api'
+import Rating from '../Components/Rating'
+import {fetchMovieById, fetchMovieCredits, createRatings} from '../Middleware/api'
 import config from '../Middleware/config';
 
 function Details() {
@@ -12,6 +13,11 @@ function Details() {
   const movie = useSelector((state) =>  state.moviesReducer.movie);
   const credits = useSelector((state) =>  state.moviesReducer.credits);
   
+  const handleRating = async (rate) => {
+    const body = {value: rate*2};
+    const response = await createRatings(params.id, body)
+    alert(response);
+  }
   useEffect(()=>{
     fetchMovieById(params.id).then(movie=> {
       dispatch({ type: 'MOVIE_DATA', payload: movie })
@@ -32,7 +38,8 @@ function Details() {
           <div style={{fontSize: "2em"}}>{movie?.title}</div>  
           <i style={{fontSize: "0.9em"}}> {movie?.tagline}</i>
         </div>
-        <p>Release Date : {RELEASE_DATE}</p>
+        <p>Release Date : {RELEASE_DATE}</p> 
+        <p><Rating rating={movie?.vote_average / 2} onRating={(rate)=>handleRating(rate)}></Rating></p>
         <b>Overview </b>
         <p> {movie?.overview}</p>
         <div className=''>Rating : {movie?.vote_average}</div>
