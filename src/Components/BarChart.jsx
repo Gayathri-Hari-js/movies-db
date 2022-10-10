@@ -20,54 +20,53 @@ function BarChart (props) {
                   .domain(d3.range(data.length))
                   .range([margin.left, chartWidth - margin.right])
                   .padding(0.3)
-      svg.append('g')
+    svg.append('g')
           .attr('transform', 'translate(0,'+ chartHeight +')')
           .call(d3.axisBottom(x).tickFormat(i=> data[i].label).tickSizeOuter(0))
       
     //find max of y axis
-      const max = d3.max(data, function(d){return d.rate});
-      const y = d3.scaleLinear()
+    const max = d3.max(data, function(d){return d.rate});
+    const y = d3.scaleLinear()
                 .domain([0,max])
                 .range([chartHeight, margin.top])
-      svg.append('g')
+    svg.append('g')
           .attr('transform', 'translate('+ margin.left +',0)')
           .call(d3.axisLeft(y))
+        
+    const barGroups = svg.selectAll()
+        .data(data)
+        .enter()
+        .append('g')
+  
+    barGroups
+        .append('rect')
+        .attr('class', 'bar')
+        .attr('fill', 'rgb(23, 167, 159)')
+        .attr('x', (d,i)=> x(i))
+        .attr('y', (g) => y(g.rate))
+        .attr('height', d=> y(0)-y(d.rate))
+        .attr('width', x.bandwidth())
+    barGroups 
+        .append('text')
+        .attr('class', 'value')
+        .attr('x', (d,i)=> x(i) + margin.right)
+        .attr('y', (a) =>  y(a.rate)  )
+        .attr('text-anchor', 'middle')
+        .style('font-size', '14px')
+        .text((a) => `${a.rate}%`)
 
-      svg.append('g')
-      .attr('fill', '#65f0eb')
-      .selectAll('rect')
-      .data(data)
-      .join('rect')
-      .attr('x', (d,i)=> x(i))
-      .attr('y', d=> y(d.rate))
-      .attr('height', d=> y(0)-y(d.rate))
-      .attr('width', x.bandwidth())
-      
-      // trying to print value on top of bars
-      // svg.append('text')
-      // .selectAll('rect')
-      // .attr('class', 'label')
-      // .data(data)
-      // .attr('x', (d) => x(d.label) + x.bandwidth() / 2)
-      // .attr('y', (d) => y(d.rate) )
-      // .attr('text-anchor', 'middle')
-      // .attr('fill', 'white')
-      // .text((data) => `${data.rate}%`)
-
-      svg.append('text')
+    svg.append('text')
       .attr('x', -(chartHeight / 2) - margin.bottom)
       .attr('y', margin.left / 2.4)
       .attr('transform', 'rotate(-90)')
       .attr('text-anchor', 'middle')
-      .attr('fill', 'white')
       .text(labels.yLabel)
 
-      svg.append('text')
+    svg.append('text')
       .attr('class', 'label')
       .attr('x', chartHeight  + margin.top)
       .attr('y', chartWidth /2.1)
       .attr('text-anchor', 'middle')
-      .attr('fill', 'white')
       .text(labels.xLabel)
     },[data, labels]);
 
