@@ -1,11 +1,11 @@
 # Getting Started with MoviesDB App
 
-MoviesDB is an react application integrated with the tmdb api.
-This application displays popular movies on dashboard and you can search for any movies that you want to watch
-On selecting a movie you can see the details like overview, crew, ratings, etc
-There is a stats page which you can navigate from the header top right graph icon.
-This stats page shows two graphs of 10 polular movies.
-First graph is ratings graph and second one is for number of votings.
+MoviesDB is an react application integrated with the tmdb api. \
+This application displays popular movies on dashboard and you can search for any movies that you want to watch. \
+On selecting a movie you can see the details like overview, crew, ratings, etc.. \
+There is a stats page which you can navigate from the header top right graph icon. \
+The stats page shows two graphs of 10 polular movies. \
+First graph is ratings graph and second one is for number of votings. 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
